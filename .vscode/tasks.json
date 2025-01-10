@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Backend",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["start:dev"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}/be-dnature-agent"
+      }
+    },
+    {
+      "label": "Start Frontend",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["dev", "--host"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "owner": "vite",
+          "fileLocation": ["relative", "${workspaceFolder}/fe-dnature-agent"],
+          "pattern": {
+            "regexp": "ready in .*ms\\n\\s*Local: (https?://localhost:\\d+)",
+            "file": 1,
+            "message": 1
+          },
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "vite v.*",
+            "endsPattern": "ready in .*ms"
+          }
+        }
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/fe-dnature-agent"
+      }
+    }
+  ],
+  "compound": {
+    "label": "Run Both",
+    "tasks": ["Start Backend", "Start Frontend"],
+    "dependsOrder": "parallel"
+  }
+}
