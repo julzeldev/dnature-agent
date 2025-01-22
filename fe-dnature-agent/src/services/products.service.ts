@@ -1,4 +1,4 @@
-import { Product, ProductCollection } from "../types/Products";
+import { Product, ProductCollection } from "../types";
 import { fetchFromContentful } from "./fetchFromContentful";
 
 const productsQuery = () => `
