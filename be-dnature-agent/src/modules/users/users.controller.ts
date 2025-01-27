@@ -39,9 +39,9 @@ export class UsersController {
 
   // Get a user by id
   @Get(':id')
-  async findOne(@Param('id') id: string): Promise<User> {
+  async findById(@Param('id') id: string): Promise<User> {
     try {
-      return await this.usersService.findOne(id);
+      return await this.usersService.findById(id);
     } catch (error) {
       if (error instanceof NotFoundException) {
         throw error;
@@ -52,9 +52,9 @@ export class UsersController {
 
   // Get a user by username
   @Get('username/:username')
-  async findOneByUsername(@Param('username') username: string): Promise<User> {
+  async findByUsername(@Param('username') username: string): Promise<User> {
     try {
-      return await this.usersService.findOneByUsername(username);
+      return await this.usersService.findByUsername(username);
     } catch (error) {
       if (error instanceof NotFoundException) {
         throw error;
