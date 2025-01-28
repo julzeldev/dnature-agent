@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { OpenaiModule } from './openai/openai.module';
 import { AppController } from './app.controller';
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
         dbName: 'DNAtureData',
       }),
     }),
+    AuthModule,
     UsersModule,
     OpenaiModule,
   ],
